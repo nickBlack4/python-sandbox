@@ -14,6 +14,17 @@ class Point:
         self.x = x
         self.y = y
 
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+    # note: when you implement the __gt__ magic method, python
+    # will automatically figure out what to do with __lt__
+    def __gt__(self, other):
+        return self.x > other.x and self.y > other.y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
     # in this block we will define all the funcs related to points
 
     def draw(self):
@@ -52,3 +63,10 @@ point.draw()
 print(point)
 # print(point)
 print(str(point))
+
+
+p1 = Point(10, 30)
+p2 = Point(1, 3)
+print(p1 > p2)
+
+print(p1 + p2)
